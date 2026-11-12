@@ -80,7 +80,7 @@ function hospRows(ctx) {
   const d = D[ctx], q = (D.hq || '').toLowerCase().trim();
   const list = HOSPITALS.filter(h => !q || (h.name + ' ' + L(h.area) + ' ' + L(h.cat)).toLowerCase().includes(q));
   if (!list.length) return `<div class="empty" style="padding:18px">${T('hosp.none')}</div>`;
-  return list.map(h => { const on = d.prefs.includes(h.id); return `<button type="button" class="hosp" role="checkbox" aria-checked="${on}" data-act="toggleHosp" data-ctx="${ctx}" data-id="${h.id}"><span class="box">${on ? icon('check', 16) : ''}</span><span><b>${h.name}</b><span>${L(h.area)} · ${L(h.cat)}</span></span></button>`; }).join('');
+  return list.map(h => { const on = d.prefs.includes(h.id); return `<div class="hosp-wrap"><button type="button" class="hosp" role="checkbox" aria-checked="${on}" data-act="toggleHosp" data-ctx="${ctx}" data-id="${h.id}"><span class="box">${on ? icon('check', 16) : ''}</span><span><b>${h.name}</b><span>${L(h.area)} · ${L(h.cat)}</span></span></button><button type="button" class="mapbtn" data-act="hmap" data-id="${h.id}" aria-label="${T('hosp.map')} – ${h.name}">${icon('pin', 16)}<span>${T('hosp.map')}</span></button></div>`; }).join('');
 }
 function hospSelector(ctx) {
   const d = D[ctx];

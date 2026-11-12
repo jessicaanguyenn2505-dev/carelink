@@ -1,4 +1,4 @@
-/* CareLink – static catalogue + demo seed data (ALL DEMO / SAMPLE DATA) */
+﻿/* CareLink – static catalogue + demo seed data (ALL DEMO / SAMPLE DATA) */
 const SKILLS = ['communication', 'event', 'organisation', 'languages', 'logistics', 'teamwork'];
 const DAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 const DAY_BY_GETDAY = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
@@ -25,7 +25,7 @@ const MEET = [
   { vi: 'Khu vực gần cổng chính, bàn tình nguyện (mẫu)', en: 'Near the main gate, volunteer table (sample)' },
   { vi: 'Quầy thông tin tầng trệt (mẫu)', en: 'Ground-floor information desk (sample)' },
 ];
-HOSPITALS.forEach((h, i) => { h.meet = MEET[i % 3]; });
+HOSPITALS.forEach((h, i) => { h.meet = MEET[i % 3]; h.map = 'map-' + h.id + (h.id === 'h3' ? '.png' : '.jpg'); });
 
 const CATS = {
   guidance: {
@@ -190,3 +190,4 @@ function seedState() {
   const hospStatus = {}; HOSPITALS.forEach(h => { hospStatus[h.id] = 'unconfirmed'; });
   return { v: 2, seedDay: _off(0), lang: 'vi', meId: null, role: null, users, opps, regs, notifs, incidents, hospStatus, sent: [], seq: 100, notifOn: true };
 }
+

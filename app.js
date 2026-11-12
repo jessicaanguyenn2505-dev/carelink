@@ -86,10 +86,21 @@ const LIVE = {
 };
 const valid = { email: s => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s), phone: s => s.replace(/\D/g, '').length >= 8 };
 
+function mapBlock(h) {
+  return `<div class="lbl" style="margin-top:12px">${T('map.title')}</div>
+    <div class="map-wrap" id="mapWrap"><img src="${h.map}" alt="${T('map.title')} – ${esc(h.name)}" loading="lazy"></div>
+    <div class="row"><button class="btn sm ghost" data-act="mapZoom">${icon('search', 15)} ${T('map.zoom')}</button><a class="btn sm ghost" href="${h.map}" target="_blank" rel="noopener">${icon('download', 15)} ${T('map.open')}</a></div>
+    <p class="small muted" style="margin-top:8px">${T('map.note')}</p>`;
+}
+function mapModal(hid) {
+  const h = hosp(hid);
+  showModal(`<h3>${icon('pin', 20)} ${h.name}</h3><div class="meta">${icon('pin', 15)} ${L(h.area)} · ${L(h.cat)}</div>${mapBlock(h)}
+    <button class="btn block" style="margin-top:14px" data-act="closeModal">${T('btn.close')}</button>`);
+}
 function meetModal(hid, oid) {
   const h = hosp(hid), o = oid ? opp(oid) : null;
   showModal(`<h3>${icon('pin', 20)} ${T('meet.title')}</h3><p><b>${h.name}</b></p><div class="meta">${icon('pin', 15)} ${L(h.area)} · ${L(h.cat)}</div>
-    <div class="card" style="margin-top:12px"><b>${T('opp.meet')}</b><p>${L(o ? meetOf(o) : h.meet)}</p></div>
+    <div class="card" style="margin-top:12px"><b>${T('opp.meet')}</b><p>${L(o ? meetOf(o) : h.meet)}</p></div>${mapBlock(h)}
     <div class="row">${partnerBadge(hid)}<span class="pill-demo">${T('demo.tag')}</span></div>
     <p class="small muted" style="margin-top:10px">${T('meet.note')}</p>
     <button class="btn block" style="margin-top:14px" data-act="closeModal">${T('btn.close')}</button>`);
@@ -148,6 +159,8 @@ const ACT = {
   exSet(d) { D.ex[d.k] = d.v; render(true); },
   exReset() { const u = me(); D.ex = { q: '', scope: !u.noPref && u.prefs.length ? 'mine' : 'all', cat: 'all', hid: '', range: 'any', time: 'any', open: false }; render(true); },
   meet(d) { meetModal(d.id, d.oid); },
+  hmap(d) { mapModal(d.id); },
+  mapZoom() { const w = $('#mapWrap'); if (w) w.classList.toggle('zoom'); },
   pickShift(d) { D.reg.sid = d.id; D.reg.err = ''; render(true); },
   confirmReg() {
     const r = D.reg; if (r.busy) return; const id = parseRoute().param;

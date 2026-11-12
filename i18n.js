@@ -58,6 +58,8 @@ const I18N = {
   'hosp.search': ['Tìm tên bệnh viện hoặc khu vực…', 'Search hospital name or area…'], 'hosp.nopref': ['Không ưu tiên – hiển thị tất cả bệnh viện', 'No preference – show me all available hospitals'],
   'hosp.all': ['Hiển thị hoạt động ở tất cả bệnh viện.', 'Showing activities at all hospitals.'], 'hosp.count': ['Đã chọn {0} bệnh viện.', '{0} hospital(s) selected.'], 'hosp.none': ['Không tìm thấy bệnh viện phù hợp.', 'No hospital matches your search.'],
   'hosp.disclaimer': ['Danh sách bệnh viện là gợi ý mẫu, không có nghĩa CareLink đã có hợp tác chính thức với các bệnh viện này.', 'The hospital list is a sample catalogue and does not mean CareLink has formal partnerships with these hospitals.'],
+  'hosp.map': ['Xem sơ đồ', 'View map'], 'map.title': ['Sơ đồ bệnh viện (tham khảo)', 'Hospital map (for reference)'], 'map.zoom': ['Phóng to / thu nhỏ', 'Zoom in / out'], 'map.open': ['Mở ảnh lớn', 'Open full image'],
+  'map.note': ['Sơ đồ lấy từ thông tin công khai, có thể đã cũ. Giúp tình nguyện viên làm quen khu vực; điểm hẹn chính thức do bệnh viện xác nhận.', 'Map taken from public information and may be outdated. It helps volunteers get familiar with the site; official meeting points are confirmed by the hospital.'],
   'prefs.title': ['Bệnh viện ưu tiên', 'Preferred hospitals'], 'toast.prefs': ['Đã cập nhật bệnh viện ưu tiên', 'Hospital preferences updated'], 'toast.saved': ['Đã lưu', 'Saved'],
   'partner.unconfirmed': ['Chưa xác nhận hợp tác', 'Partnership not yet confirmed'], 'partner.inprogress': ['Đang trao đổi', 'Discussions in progress'], 'partner.confirmed': ['Đã xác nhận hợp tác', 'Partnership confirmed'],
 
